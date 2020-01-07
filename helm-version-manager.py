@@ -58,8 +58,8 @@ def switch(version):
 
     path = os.path.join(helmdir, version, 'helm')
     binpath = '/usr/local/bin/helm'
-
-    if os.path.exists(binpath):
+    
+    if os.path.lexists(binpath):
         os.remove(binpath)
 
     os.symlink(path, binpath)

@@ -38,10 +38,10 @@ def get(version):
     if r.status_code == 200:
         file = io.BytesIO(r.content)
         tar = tarfile.open(fileobj=file, mode="r:gz")
-        tar.extractall()
+        tar.extractall(path=helmdir)
         tar.close()
 
-        typepath = os.path.join(scriptdir, type)
+        typepath = os.path.join(helmdir, type)
         versionpath = os.path.join(helmdir, version)
 
         os.rename(typepath, versionpath)
